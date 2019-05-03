@@ -66,13 +66,15 @@ fun main() {
         var newEnemy = enemy("ripple", "bad_boi", 10, 1, false, true)
         println("Something is hiding in shadow, can you see it?")
         message = readLine()!!
-        if(message == "y") {
+        if(message != "n") {
             newEnemy.hp = newEnemy.hp - character.power
             newEnemy.isAlive = dead(newEnemy.hp)
             if(newEnemy.isAlive == false){
                 println("${character.name} using its incredible iq smashes ${newEnemy.name}.")
                 println("${newEnemy.name} has been ${goodbye(newEnemy.isAlive)}")
                 killCounter++
+                character.power++
+                println(character.power)
             }
 
         }
@@ -80,8 +82,10 @@ fun main() {
         println("Want to continue?")
         message = readLine()!!
         if(message == "y") println("Naaaah!")
-        else("Goodbye")
-
-        break
+        else {
+            println("Goodbye")
+            break
+        }
     }
+    println("Number of kills: $killCounter.")
 }
